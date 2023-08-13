@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Indonesian Hacker Rulez</title>
+	<script src="./index.js"></script>
+	<script src="./jquery-3.7.0.min.js"></script>
+	<script src="./bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./bootstrap.min.css"></link>
+</head>
+<body>
+<div class="container">
+
+	<div class="row justify-content-center" style="margin-top: 25px;">
+
+		<div class="col-lg-12">
+			<h1 class="display-4">INDONESIAN HACKER RULEZ</h1>
+			<p class="lead">"Indonesia selalu dipuja-puja bangsa", This is Special for you, All The Best Indonesian People. by <a href="https//twitter.com/realzcode">RealzCode</a></p>
+			<hr class="my-4">
+		</div>
+
+	</div>
+
+  	<div class="row justify-content-center">
+
+		<div class="col-lg-12">
+
+			<div class="form-group">
+				<label class="label-control">Our Country</label>
+				<div class="input-group">
+					<select class="form-control" id="color1">
+						<option value="red" selected>RED</option>
+						<option value="white">WHITE</option>
+						<option value="gray">GRAY</option>
+						<option value="blue">BLUE</option>
+						<option value="brown">BROWN</option>
+						<option value="green">GREEN</option>
+						<option value="black">BLACK</option>
+						<option value="yellow">YELLOW</option>
+						<option value="orange">ORANGE</option>
+						<option value="purple">PURPLE</option>
+						<option value="silver">SILVER</option>
+					</select>
+					<select id="country" class="form-control"></select>
+					<select class="form-control" id="color2">
+						<option value="red">RED</option>
+						<option value="white" selected>WHITE</option>
+						<option value="gray">GRAY</option>
+						<option value="blue">BLUE</option>
+						<option value="brown">BROWN</option>
+						<option value="green">GREEN</option>
+						<option value="black">BLACK</option>
+						<option value="yellow">YELLOW</option>
+						<option value="orange">ORANGE</option>
+						<option value="purple">PURPLE</option>
+						<option value="silver">SILVER</option>
+					</select>
+					<select id="group" class="form-control"></select>
+					<div class="input-group-append">
+						<button id="country_group" class="btn btn-sm btn-danger">Random</button>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="label-control"><img id="country_badges" src="https://img.shields.io/badge/HACKER%20TEAM-white?label=INDO&labelColor=red"/></label>
+				<div class="input-group mb-3">
+				  <textarea type="text" class="form-control" id="country_text"></textarea>
+				  <div class="input-group-append">
+				    <button id="copy_text"  class="btn btn-outline-secondary" type="button">Copy</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row justify-content-center">
+
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label class="label-control">Our City</label>
+				<div class="input-group">
+					<select id="city" class="form-control"></select>
+					<select id="group2" class="form-control"></select>
+					<div class="input-group-append">
+						<button id="city_group" class="btn btn-sm btn-danger">Random</button>
+					</div>
+					
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="label-control">Result</label>
+				<div class="input-group mb-3">
+				  <textarea type="text" class="form-control" id="group_text"></textarea>
+				  <div class="input-group-append">
+				    <button id="copy_text"  class="btn btn-outline-secondary" type="button">Copy</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row justify-content-center" style="margin-bottom: 25px;">
+
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label class="label-control">Pseudonym</label>
+				<div class="input-group">
+					<select class="form-control" id="color2">
+						<option value="red">RED</option>
+						<option value="white" selected>WHITE</option>
+						<option value="gray">GRAY</option>
+						<option value="blue">BLUE</option>
+						<option value="brown">BROWN</option>
+						<option value="green">GREEN</option>
+						<option value="black">BLACK</option>
+						<option value="yellow">YELLOW</option>
+						<option value="orange">ORANGE</option>
+						<option value="purple">PURPLE</option>
+						<option value="silver">SILVER</option>
+					</select>
+					<input type="text" class="form-control" id="country_text" value="You are"></input>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label class="label-control">Team</label>
+				<div class="input-group">
+					<select class="form-control" id="color2">
+						<option value="red">RED</option>
+						<option value="white" selected>WHITE</option>
+						<option value="gray">GRAY</option>
+						<option value="blue">BLUE</option>
+						<option value="brown">BROWN</option>
+						<option value="green">GREEN</option>
+						<option value="black">BLACK</option>
+						<option value="yellow">YELLOW</option>
+						<option value="orange">ORANGE</option>
+						<option value="purple">PURPLE</option>
+						<option value="silver">SILVER</option>
+					</select>
+					<input type="text" class="form-control" id="country_text" value="RealzCode"></input>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="form-group">
+				<label class="label-control">Result</label>
+				<div class="input-group mb-3">
+				  <textarea type="text" class="form-control" id="team_text"></textarea>
+				  <div class="input-group-append">
+				    <button id="copy_text"  class="btn btn-outline-secondary" type="button">Copy</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+	
+
+</body>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	country_ = '';
+	country_rand = Math.floor(Math.random() * country.length);
+	country_name = country[country_rand];
+
+	$.each(country, function(k,v){
+		country_+= '<option value="' + k + '" ' + (k == country_rand ? 'selected' : '') + '>'  + v + '</option>'; 
+	});
+
+	$('#country').html(country_);
+	$('#country_text').val(country_name);
+
+	group_ = '';
+	group_rand = Math.floor(Math.random() * group.length);
+	group_name = group[group_rand];
+
+	$.each(group, function(k,v){
+		group_+= '<option value="' + k + '" ' + (k == group_rand ? 'selected' : '') + '>'  + v + '</option>'; 
+	});
+
+	$('#group').html(group_);
+
+	group_name_ = group_name.replace(' ', '%20');
+	src = 'https://img.shields.io/badge/' + group_name_ + '-' + $('#color2').val() + '?label=' + country_name + '&labelColor='+ $('#color1').val();
+	$('#country_text').val('<img src="' + src +  '" alt="' + country_name + ' ' + group_name + '"/>');
+	$('#country_badges').attr('src', src);
+
+	city_ = '';
+	$.each(city, function(k,v){
+		city_+= '<option value="' + k + '" ' + (k == Math.floor(Math.random() * city.length) ? 'selected' : '') + '>'  + v + '</option>'; 
+	});
+	$('#city').html(city_);
+
+	group2_ = '';
+	$.each(group, function(k,v){
+		group2_+= '<option value="' + k + '" ' + (k == Math.floor(Math.random() * group.length) ? 'selected' : '') + '>'  + v + '</option>'; 
+	});
+	$('#group2').html(group2_);
+
+	
+	$('#country_group').on('click', function(e){
+
+		e.preventDefault();
+		country_rand = Math.floor(Math.random() * country.length);
+		country_name = country[country_rand];
+		group_rand = Math.floor(Math.random() * group.length);
+		group_name = group[group_rand];
+		$('#country').val(country_rand).trigger('change');
+		$('#group').val(group_rand).trigger('change');
+		group_name_ = group_name.replace(' ', '%20');
+		src = 'https://img.shields.io/badge/' + group_name_ + '-' + $('#color2').val() + '?label=' + country_name + '&labelColor='+ $('#color1').val();
+		$('#country_text').val('<img src="' + src +  '" alt="' + country_name + ' ' + group_name + '"/>');
+		$('#country_badges').attr('src', src);
+	});
+
+	$('#city_group').on('click', function(e){
+		e.preventDefault();
+		$('#city').val(Math.floor(Math.random() * city.length)).trigger('change');
+		$('#group2').val(Math.floor(Math.random() * group.length)).trigger('change');
+	});
+
+});
+
+</script>
+</html>
