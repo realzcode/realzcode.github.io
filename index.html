@@ -5,228 +5,287 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Indonesian Hacker Rulez</title>
 	<script src="./index.js"></script>
-	<script src="./jquery-3.7.0.min.js"></script>
-	<script src="./bootstrap.min.js"></script>
+	<script src="./jquery.min.js"></script>
 	<link rel="stylesheet" href="./bootstrap.min.css"></link>
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+	<link rel="manifest" href="./site.webmanifest">
 </head>
 <body>
-<div class="container">
-
-	<div class="row justify-content-center" style="margin-top: 25px;">
-
-		<div class="col-lg-12">
-			<h1 class="display-4">INDONESIAN HACKER RULEZ</h1>
-			<p class="lead">"Indonesia selalu dipuja-puja bangsa", This is Special for you, All The Best Indonesian People. by <a href="https//twitter.com/realzcode">RealzCode</a></p>
-			<hr class="my-4">
+	<div class="container">
+		<div class="row justify-content-center" style="margin-top: 45px;">
+			<div class="col-lg-10">
+				<h1 class="display-4">INDONESIAN HACKER RULEZ</h1>
+				<p class="lead">"Indonesia selalu dipuja-puja bangsa", This is Special for you, All The Best Indonesian People. by <a href="https://twitter.com/realzcode" target="_blank">RealzCode</a></p>
+				<hr class="my-4">
+			</div>
 		</div>
-
-	</div>
-
-  	<div class="row justify-content-center">
-
-		<div class="col-lg-12">
-
-			<div class="form-group">
-				<label class="label-control">Our Country</label>
-				<div class="input-group">
-					<select class="form-control" id="color1">
-						<option value="red" selected>RED</option>
-						<option value="white">WHITE</option>
-						<option value="gray">GRAY</option>
-						<option value="blue">BLUE</option>
-						<option value="brown">BROWN</option>
-						<option value="green">GREEN</option>
-						<option value="black">BLACK</option>
-						<option value="yellow">YELLOW</option>
-						<option value="orange">ORANGE</option>
-						<option value="purple">PURPLE</option>
-						<option value="silver">SILVER</option>
-					</select>
-					<select id="country" class="form-control"></select>
-					<select class="form-control" id="color2">
-						<option value="red">RED</option>
-						<option value="white" selected>WHITE</option>
-						<option value="gray">GRAY</option>
-						<option value="blue">BLUE</option>
-						<option value="brown">BROWN</option>
-						<option value="green">GREEN</option>
-						<option value="black">BLACK</option>
-						<option value="yellow">YELLOW</option>
-						<option value="orange">ORANGE</option>
-						<option value="purple">PURPLE</option>
-						<option value="silver">SILVER</option>
-					</select>
-					<select id="group" class="form-control"></select>
-					<div class="input-group-append">
-						<button id="country_group" class="btn btn-sm btn-danger">Random</button>
+	  	<div class="row justify-content-center">
+			<div class="col-lg-10">
+				<div class="form-group">
+					<label class="label-control">OUR COUNTRY</label>
+					<div class="input-group">
+						<select class="form-control" id="color1"></select>
+						<select class="form-control" id="country"></select>
+						<select class="form-control" id="color2"></select>
+						<select class="form-control" id="group1" ></select>
+						<div class="input-group-append">
+							<button class="btn btn-sm btn-danger" id="country-group">RANDOM</button>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="label-control"><img id="country-badges" src=""/></label>
+					<div class="input-group mb-3">
+					  <textarea type="text" class="text form-control" id="country-text"></textarea>
+					  <div class="input-group-append">
+					    <button class="copy-text btn btn-outline-secondary" type="button" title="Copied">Copy</button>
+					  </div>
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="label-control"><img id="country_badges" src="https://img.shields.io/badge/HACKER%20TEAM-white?label=INDO&labelColor=red"/></label>
-				<div class="input-group mb-3">
-				  <textarea type="text" class="form-control" id="country_text"></textarea>
-				  <div class="input-group-append">
-				    <button id="copy_text"  class="btn btn-outline-secondary" type="button">Copy</button>
-				  </div>
-				</div>
-			</div>
 		</div>
-
-	</div>
-
-	<div class="row justify-content-center">
-
-		<div class="col-lg-12">
-			<div class="form-group">
-				<label class="label-control">Our City</label>
-				<div class="input-group">
-					<select id="city" class="form-control"></select>
-					<select id="group2" class="form-control"></select>
-					<div class="input-group-append">
-						<button id="city_group" class="btn btn-sm btn-danger">Random</button>
+		<div class="row justify-content-center">
+			<div class="col-lg-10">
+				<div class="form-group">
+					<label class="label-control">OUR CITY</label>
+					<div class="input-group">
+						<select class="form-control" id="color3"></select>
+						<select class="form-control" id="city"></select>
+						<select class="form-control" id="color4"></select>
+						<select class="form-control" id="group2"></select>
+						<div class="input-group-append">
+							<button class="btn btn-sm btn-danger" id="city-group">RANDOM</button>
+						</div>
+						
 					</div>
-					
 				</div>
-			</div>
-			<div class="form-group">
-				<label class="label-control">Result</label>
-				<div class="input-group mb-3">
-				  <textarea type="text" class="form-control" id="group_text"></textarea>
-				  <div class="input-group-append">
-				    <button id="copy_text"  class="btn btn-outline-secondary" type="button">Copy</button>
-				  </div>
+				<div class="form-group">
+					<label class="label-control"><img id="city-badges" src=""/></label>
+					<div class="input-group mb-3">
+					  <textarea type="text" class="text form-control" id="city-text"></textarea>
+					  <div class="input-group-append">
+					    <button class="copy-text btn btn-outline-secondary" type="button" title="Copied">Copy</button>
+					  </div>
+					</div>
 				</div>
 			</div>
 		</div>
-
+		<div class="row justify-content-center" style="margin-bottom: 45px;">
+			<div class="col-lg-5">
+				<div class="form-group">
+					<label class="label-control">YOUR PSEUDONYM</label>
+					<div class="input-group">
+						<select class="form-control" id="color5"></select>
+						<input type="text" class="form-control" id="pseudonym-text" value="./Y0uAr3"></input>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5">
+				<div class="form-group">
+					<label class="label-control">YOUR TEAM</label>
+					<div class="input-group">
+						<select class="form-control" id="color6"></select>
+						<input type="text" class="form-control" id="team-text" value="RealzCode"></input>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-10">
+				<div class="form-group">
+					<label class="label-control"><img id="custom-badges" src="https://img.shields.io/badge/RealzCode-gray?label=./Y0uAr3&labelColor=white"/></label>
+					<div class="input-group mb-3">
+					  <textarea type="text" class="text form-control" id="custom-text"></textarea>
+					  <div class="input-group-append">
+					    <button class="copy-text btn btn-outline-secondary" type="button">Copy</button>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<div class="row justify-content-center" style="margin-bottom: 25px;">
-
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label class="label-control">Pseudonym</label>
-				<div class="input-group">
-					<select class="form-control" id="color2">
-						<option value="red">RED</option>
-						<option value="white" selected>WHITE</option>
-						<option value="gray">GRAY</option>
-						<option value="blue">BLUE</option>
-						<option value="brown">BROWN</option>
-						<option value="green">GREEN</option>
-						<option value="black">BLACK</option>
-						<option value="yellow">YELLOW</option>
-						<option value="orange">ORANGE</option>
-						<option value="purple">PURPLE</option>
-						<option value="silver">SILVER</option>
-					</select>
-					<input type="text" class="form-control" id="country_text" value="You are"></input>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label class="label-control">Team</label>
-				<div class="input-group">
-					<select class="form-control" id="color2">
-						<option value="red">RED</option>
-						<option value="white" selected>WHITE</option>
-						<option value="gray">GRAY</option>
-						<option value="blue">BLUE</option>
-						<option value="brown">BROWN</option>
-						<option value="green">GREEN</option>
-						<option value="black">BLACK</option>
-						<option value="yellow">YELLOW</option>
-						<option value="orange">ORANGE</option>
-						<option value="purple">PURPLE</option>
-						<option value="silver">SILVER</option>
-					</select>
-					<input type="text" class="form-control" id="country_text" value="RealzCode"></input>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-12">
-			<div class="form-group">
-				<label class="label-control">Result</label>
-				<div class="input-group mb-3">
-				  <textarea type="text" class="form-control" id="team_text"></textarea>
-				  <div class="input-group-append">
-				    <button id="copy_text"  class="btn btn-outline-secondary" type="button">Copy</button>
-				  </div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-</div>
-
-	
-
 </body>
 <script type="text/javascript">
 
 $(document).ready(function() {
 
-	country_ = '';
-	country_rand = Math.floor(Math.random() * country.length);
-	country_name = country[country_rand];
+	let color1_ = '';
+	let color2_ = '';
+	let color3_ = '';
+	let color4_ = '';
+	let color5_ = '';
+	let color6_ = '';
 
-	$.each(country, function(k,v){
-		country_+= '<option value="' + k + '" ' + (k == country_rand ? 'selected' : '') + '>'  + v + '</option>'; 
+	$.each(color, function(k,v) {
+		color1_+= '<option value="' + k + '" ' + (k == 11 ? 'selected' : '') + '>'  + v + '</option>'; 
+		color2_+= '<option value="' + k + '" ' + (k == 14 ? 'selected' : '') + '>'  + v + '</option>'; 
+		color3_+= '<option value="' + k + '" ' + (k == 5 ? 'selected' : '') + '>'  + v + '</option>'; 
+		color4_+= '<option value="' + k + '" ' + (k == 4 ? 'selected' : '') + '>'  + v + '</option>'; 
+		color5_+= '<option value="' + k + '" ' + (k == 14 ? 'selected' : '') + '>'  + v + '</option>'; 
+		color6_+= '<option value="' + k + '" ' + (k == 4 ? 'selected' : '') + '>'  + v + '</option>'; 
 	});
 
+	$('#color1').html(color1_);
+	$('#color2').html(color2_);
+	$('#color3').html(color3_);
+	$('#color4').html(color4_);
+	$('#color5').html(color5_);
+	$('#color6').html(color6_);
+
+	let country_ = '';
+	$.each(country, function(k,v) {
+		country_+= '<option value="' + k + '">'  + v + '</option>'; 
+	});
 	$('#country').html(country_);
-	$('#country_text').val(country_name);
 
-	group_ = '';
-	group_rand = Math.floor(Math.random() * group.length);
-	group_name = group[group_rand];
-
-	$.each(group, function(k,v){
-		group_+= '<option value="' + k + '" ' + (k == group_rand ? 'selected' : '') + '>'  + v + '</option>'; 
-	});
-
-	$('#group').html(group_);
-
-	group_name_ = group_name.replace(' ', '%20');
-	src = 'https://img.shields.io/badge/' + group_name_ + '-' + $('#color2').val() + '?label=' + country_name + '&labelColor='+ $('#color1').val();
-	$('#country_text').val('<img src="' + src +  '" alt="' + country_name + ' ' + group_name + '"/>');
-	$('#country_badges').attr('src', src);
-
-	city_ = '';
+	let city_ = '';
 	$.each(city, function(k,v){
-		city_+= '<option value="' + k + '" ' + (k == Math.floor(Math.random() * city.length) ? 'selected' : '') + '>'  + v + '</option>'; 
+		city_+= '<option value="' + k + '">'  + v + '</option>'; 
 	});
 	$('#city').html(city_);
 
-	group2_ = '';
-	$.each(group, function(k,v){
-		group2_+= '<option value="' + k + '" ' + (k == Math.floor(Math.random() * group.length) ? 'selected' : '') + '>'  + v + '</option>'; 
+	let group_ = '';
+	$.each(group, function(k,v) {
+		group_+= '<option value="' + k + '">'  + v + '</option>'; 
 	});
-	$('#group2').html(group2_);
+	$('#group1').html(group_);
+	$('#group2').html(group_);
 
-	
-	$('#country_group').on('click', function(e){
+	rand_country();
+	rand_city();
+	_team();
 
+	$('#country-group').on('click', function(e){
 		e.preventDefault();
-		country_rand = Math.floor(Math.random() * country.length);
-		country_name = country[country_rand];
-		group_rand = Math.floor(Math.random() * group.length);
-		group_name = group[group_rand];
+		rand_country();
+	});
+
+	$('#color1, #color2, #country, #group1').on('change', function(e){
+		e.preventDefault();
+		_country();
+	});
+
+	function _country() {
+		let country_     = $('#country').val();
+		let group_       = $('#group1').val();
+		let color1_      = $('#color1').val();
+		let color2_      = $('#color2').val();
+		let color1_name  = color[color1_];
+		let color2_name  = color[color2_];
+		let country_name = country[country_];
+		let group_name   = group[group_];
+		let group_name_  = group_name.replace(' ', '%20');
+		let src = 'https://img.shields.io/badge/' + group_name_ + '-' + color2_name.toLowerCase() + 
+			  	  '?label=' + country_name + 
+			  	  '&labelColor='+ color1_name.toLowerCase();
+		$('#country-text').val('<img src="' + src + '" alt="' + country_name + ' ' + group_name + '"/>');
+		$('#country-badges').attr('src', src);
+	}
+
+	function rand_country() {
+		let country_rand = Math.floor(Math.random() * country.length);
+		let group_rand   = Math.floor(Math.random() * group.length);
+		let color1_      = $('#color1').val();
+		let color2_      = $('#color2').val();
+		let color1_name  = color[color1_];
+		let color2_name  = color[color2_];
+		let country_name = country[country_rand];
+		let group_name   = group[group_rand];
+		let group_name_  = group_name.replace(' ', '%20');
+		let src = 'https://img.shields.io/badge/' + group_name_ + '-' + color2_name.toLowerCase() + 
+			  	  '?label=' + country_name + 
+			  	  '&labelColor='+ color1_name.toLowerCase();
+		$('#country-text').val('<img src="' + src + '" alt="' + country_name + ' ' + group_name + '"/>');
+		$('#country-badges').attr('src', src);
 		$('#country').val(country_rand).trigger('change');
-		$('#group').val(group_rand).trigger('change');
-		group_name_ = group_name.replace(' ', '%20');
-		src = 'https://img.shields.io/badge/' + group_name_ + '-' + $('#color2').val() + '?label=' + country_name + '&labelColor='+ $('#color1').val();
-		$('#country_text').val('<img src="' + src +  '" alt="' + country_name + ' ' + group_name + '"/>');
-		$('#country_badges').attr('src', src);
+		$('#group1').val(group_rand).trigger('change');
+	}
+
+	$('#city-group').on('click', function(e){
+		e.preventDefault();
+		rand_city();
 	});
 
-	$('#city_group').on('click', function(e){
+	$('#color3, #color4, #city, #group2').on('change', function(e){
 		e.preventDefault();
-		$('#city').val(Math.floor(Math.random() * city.length)).trigger('change');
-		$('#group2').val(Math.floor(Math.random() * group.length)).trigger('change');
+		_city();
+	});
+
+	function _city() {
+		let city_rand   = $('#city').val();
+		let group_rand  = $('#group2').val();
+		let color3_rand = $('#color3').val();
+		let color4_rand = $('#color4').val();
+		let color3_name = color[color3_rand];
+		let color4_name = color[color4_rand];
+		let city_name   = city[city_rand];
+		let group_name  = group[group_rand];
+		let group_name_ = group_name.replace(' ', '%20');
+		let src = 'https://img.shields.io/badge/' + group_name_ + '-' + color4_name.toLowerCase() + 
+			  	  '?label=' + city_name + 
+			  	  '&labelColor='+ color3_name.toLowerCase();
+		$('#city-text').val('<img src="' + src + '" alt="' + city_name + ' ' + group_name + '"/>');
+		$('#city-badges').attr('src', src);
+	}
+
+	function rand_city() {
+		let city_rand   = Math.floor(Math.random() * city.length);
+		let group_rand  = Math.floor(Math.random() * group.length);
+		let color3_rand = Math.floor(Math.random() * color.length);
+		let color4_rand = Math.floor(Math.random() * color.length);
+		let color3_name = color[color3_rand];
+		let color4_name = color[color4_rand];
+		let city_name   = city[city_rand];
+		let group_name  = group[group_rand];
+		let group_name_ = group_name.replace(' ', '%20');
+		let src = 'https://img.shields.io/badge/' + group_name_ + '-' + color4_name.toLowerCase() + 
+			  	  '?label=' + city_name + 
+			  	  '&labelColor='+ color3_name.toLowerCase();
+		$('#city-text').val('<img src="' + src + '" alt="' + city_name + ' ' + group_name + '"/>');
+		$('#city-badges').attr('src', src);
+		$('#city').val(city_rand).trigger('change');
+		$('#group2').val(group_rand).trigger('change');
+		$('#color3').val(color3_rand).trigger('change');
+		$('#color4').val(color4_rand).trigger('change');
+	}
+
+	$('#color5, #color6').on('change', function(e){
+		e.preventDefault();
+		_team();
+	});
+
+	$('#pseudonym-text, #team-text').on('change',function(e){
+		e.preventDefault();
+		_team();
+	});
+
+	function _team() {
+		let pseudonym       = $('#pseudonym-text').val();
+		let team            = $('#team-text').val();
+		let color5          = $('#color5').val();
+		let color6          = $('#color6').val();
+		let color5_name     = color[color5];
+		let color6_name     = color[color6];
+		let pseudonym_name_ = pseudonym.replace(' ', '%20');
+		let team_name_      = team.replace(' ', '%20');
+		let src = 'https://img.shields.io/badge/' + team_name_ + '-' + color6_name.toLowerCase() + 
+			  	  '?label=' + pseudonym_name_ + 
+			  	  '&labelColor='+ color5_name.toLowerCase();
+		$('#custom-text').val('<img src="' + src + '" alt="' + pseudonym + ' ' + team + '"/>');
+		$('#custom-badges').attr('src', src);
+	}
+
+	$('.copy-text').on('mousedown mouseleave', function(e){
+		e.preventDefault();
+		$(this).text('Copy');
+	});
+
+	$('.copy-text').on('click', function(e){
+		e.preventDefault();
+		$(this).closest('.input-group').find('.text').select();
+		document.execCommand("copy");
+		$(this).text('Copied');
 	});
 
 });

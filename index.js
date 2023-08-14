@@ -3,10 +3,10 @@
 
 var country = [
 	"ID",
-	"INA",
+	"IDN",
 	"INDO",
 	"INDONESIA",
-	"INDONESIAN",
+	"INDONESIAN"
 ];
 
 var city = [
@@ -152,7 +152,7 @@ var group = [
 	"REALZCODE",
 	"SECURITY",
 	"NETWORK", 
-	"DEFENCE", 
+	"DEFENSE", 
 	"DEFENDER", 
 	"BLACKHAT", 
 	"WHITEHAT", 
@@ -161,7 +161,28 @@ var group = [
 	"DEFACER", 
 	"EXPLOIT", 
 	"XPLOIT", 
+	"GETAR", 
 	"CODER", 
+	"CODE", 
 	"SEC",
-	"NET", 
+	"NET"
+];
+
+var color = [
+	'BLACK',
+	'BLUE',
+	'BROWN',
+	'CYAN',
+	'GRAY',
+	'GREEN',
+	'LIME',
+	'MAGENTA',
+	'ORANGE',
+	'PINK',
+	'PURPLE',
+	'RED',
+	'SILVER',
+	'VIOLET',
+	'WHITE',
+	'YELLOW'
 ];
