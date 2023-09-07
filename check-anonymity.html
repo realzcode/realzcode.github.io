@@ -49,7 +49,7 @@
 					if (uadata) {
 							os = uadata.platform;
 							brands = uadata.brands;
-							brand = brands[0].brand + (brands[2] ? ', ' + brands[2].brand : null);
+							brand = brands[0].brand + (brands[1] ? ', ' + brands[1].brand : null) + (brands[2] ? ', ' + brands[2].brand : null);
 					} else {
 							os = client.oscpu;
 							brand = 'Firefox';
