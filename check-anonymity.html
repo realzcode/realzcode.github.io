@@ -41,31 +41,31 @@
 				  	let uadata = client.userAgentData;
 				  	let langc = client.language;
 				  	let screen = window.screen;
-						let percent = 50; // Maybe Later
-						let brand = 0;
-						let os = 0;
-						let server = new Date().toLocaleString(lang, { timeZone: data.timezone });
-						let local = new Date().toString();
-						if (uadata) {
-								os = uadata.platform;
-								brands = uadata.brands;
-								brand = brands[0].brand + ', ' + brands[2].brand;
-						} else {
-								os = client.oscpu;
-								brand = 'Firefox';
-						}
-						$('.os').html(os);
-						$('.time').html(local);
-						$('.status').html(percent + '%');
-						$('.lang').html(lang + '<br>' + langc);
-						$('.ip').text(data.version + ' ' + data.ip);
-						$('.net').html(data.asn + '<br>' + data.org);
-						$('.useragent').html('Browser ' + brand + '<br>' + client.userAgent);
-						$('.location').html('Lat ' + data.latitude + ', Lon ' + data.longitude);
-						$('.gmap').attr('href', 'https://maps.google.com/?q=' + data.latitude + ',' + data.longitude);
-						$('.screen').html(screen.availWidth + 'x' + screen.availHeight + ' (' + screen.colorDepth + 'bit)');
-						$('.country').html(data.country_name + ', ' + data.country_capital + ', ' + data.city + ', ' + data.postal + ' (' + data.country + ')');
-				  });
+					let percent = 50; // Maybe Later
+					let brand = 0;
+					let os = 0;
+					let server = new Date().toLocaleString(lang, { timeZone: data.timezone });
+					let local = new Date().toString();
+					if (uadata) {
+							os = uadata.platform;
+							brands = uadata.brands;
+							brand = brands[0].brand + (brands[2] ? ', ' + brands[2].brand : null);
+					} else {
+							os = client.oscpu;
+							brand = 'Firefox';
+					}
+					$('.os').html(os);
+					$('.time').html(local);
+					$('.status').html(percent + '%');
+					$('.lang').html(lang + '<br>' + langc);
+					$('.ip').text(data.version + ' ' + data.ip);
+					$('.net').html(data.asn + '<br>' + data.org);
+					$('.useragent').html('Browser ' + brand + '<br>' + client.userAgent);
+					$('.location').html('Lat ' + data.latitude + ', Lon ' + data.longitude);
+					$('.gmap').attr('href', 'https://maps.google.com/?q=' + data.latitude + ',' + data.longitude);
+					$('.screen').html(screen.availWidth + 'x' + screen.availHeight + ' (' + screen.colorDepth + 'bit)');
+					$('.country').html(data.country_name + ', ' + data.country_capital + ', ' + data.city + ', ' + data.postal + ' (' + data.country + ')');
+			  		});
 				});
 			</script>
 			<h2 class="display-4"><span class="ip"></span></h2>
