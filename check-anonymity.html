@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>👻 Check Anonymity</title>
+	<script src="./index.js"></script>
+	<script src="./jquery.min.js"></script>
+	<link rel="stylesheet" href="./bootstrap.min.css"></link>
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+	<link rel="manifest" href="./site.webmanifest">
+</head>
+<body class="bg-dark text-white">
+  <div class="container">
+    <div class="row justify-content-center" style="margin-top: 45px;">
+      <div class="col-lg-10">
+        <h1 class="display-4">👻 Check Anonymity</h1>
+				<p class="lead">https://ipapi.co/json. by <a class="text-white" href="https://twitter.com/realzcode" target="_blank">RealzCode</a></p>
+				<hr class="my-4" style="background:white;">
+      </div>
+  </div>
+	<div class="d-flex justify-content-center" style="margin-bottom: 45px;">
+		<div class="col-lg-10 text-center">
+			<script>
+				$(document).ready(function() {
+					fetch('https://ipapi.co/json')
+				  .then(response => response.json())
+				  .then(data => {
+				  	/*
+						 *	Check Anonimity v1.0
+						 *	Made by Gecko and Fox
+						 *	Security by RealzCode
+						 *	Disclaimer, if you want apply to your application security, just tag my name
+						 *	- JS Everywhere 🗣️
+				  	 */
+				  	let lang = data.languages.split(',')[0];
+				  	let client = window.clientInformation;
+				  	let uadata = client.userAgentData;
+				  	let langc = client.language;
+				  	let screen = window.screen;
+						let percent = 50; // Maybe Later
+						let brand = 0;
+						let os = 0;
+						let server = new Date().toLocaleString(lang, { timeZone: data.timezone });
+						let local = new Date().toString();
+						if (uadata) {
+								os = uadata.platform;
+								brands = uadata.brands;
+								brand = brands[0].brand + ', ' + brands[2].brand;
+						} else {
+								os = client.oscpu;
+								brand = 'Firefox';
+						}
+						$('.os').html(os);
+						$('.time').html(local);
+						$('.status').html(percent + '%');
+						$('.lang').html(lang + '<br>' + langc);
+						$('.ip').text(data.version + ' ' + data.ip);
+						$('.net').html(data.asn + '<br>' + data.org);
+						$('.useragent').html('Browser ' + brand + '<br>' + client.userAgent);
+						$('.location').html('Lat ' + data.latitude + ', Lon ' + data.longitude);
+						$('.gmap').attr('href', 'https://maps.google.com/?q=' + data.latitude + ',' + data.longitude);
+						$('.screen').html(screen.availWidth + 'x' + screen.availHeight + ' (' + screen.colorDepth + 'bit)');
+						$('.country').html(data.country_name + ', ' + data.country_capital + ', ' + data.city + ', ' + data.postal + ' (' + data.country + ')');
+				  });
+				});
+			</script>
+			<h2 class="display-4"><span class="ip"></span></h2>
+			<h1>My Anonymity <span class="badge bg-secondary status" title="Maybe Later"></span></h1>
+			<hr class="my-4" style="background:white;">
+			<div>
+				<table class="table table-bordered">
+				  <thead>
+				    <tr>
+						  <th class="table-dark">Country</th>
+						  <th class="table-dark">Lang</th>
+						  <th class="table-dark">Location</th>
+						  <th class="table-dark">OS</th>
+						  <th class="table-dark">Network</th>
+						  <th class="table-dark">Time</th>
+						  <th class="table-dark">Screen</th>
+						</tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+						  <td class="table-dark"><span class="country"></span></td>
+						  <td class="table-dark"><span class="lang"></span></td>
+						  <td class="table-dark"><a class="text-white gmap" href="#" target="_blank"><span class="location"></span></a></td>
+						  <td class="table-dark"><span class="os"></span></td>
+						  <td class="table-dark"><span class="net"></span></td>
+						  <td class="table-dark"><span class="time"></span></td>
+						  <td class="table-dark"><span class="screen"></span></td>
+						</tr>
+				  </tbody>
+				</table>
+			</div>
+			<hr class="my-4" style="background:white;">
+			<span class="useragent"></span>
+		</div>
+	</div>
+</div>
+</body>
+</html>
