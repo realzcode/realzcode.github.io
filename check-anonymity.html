@@ -47,7 +47,7 @@
 				let percent = 100;
 				let brand = 0;
 				let os = 0;
-				let tserver_ = fetch('http://worldtimeapi.org/api/timezone/' + data.timezone)
+				let tserver_ = fetch('https://worldtimeapi.org/api/timezone/' + data.timezone)
 						  .then(response => response.json())
 						  .then(data => data.dateTime);
 
