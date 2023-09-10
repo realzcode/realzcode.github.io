@@ -47,13 +47,47 @@
 				let percent = 100;
 				let brand = 0;
 				let os = 0;
-				let tserver_ = fetch('https://worldtimeapi.org/api/timezone/' + data.timezone)
+				fetch('https://worldtimeapi.org/api/timezone/' + data.timezone)
 						  .then(response => response.json())
-						  .then(data => data.dateTime);
-
-				let tserver = new Date(tserver_).toUTCString();
-				let tlocal = new Date().toUTCString();
-
+						  .then(data => {
+						  	/*
+						  	 * 3 Keys Programmer (Array, Loop, IF)
+						  	 *
+						  	 */
+								let datetime  = data.datetime;
+								let _datetime = datetime.split('T');
+								let _date     = _datetime[0];
+								let _dates    = _date.split('-');
+								let _year     = _dates[0];
+								let _month    = _dates[1];
+								let _date2    = _dates[2];
+								let _time     = _datetime[1];
+								let _times    = _time.split('.');
+								let _ftime    = _times[0];
+								let _ftimes   = _ftime.split(':');
+								let _hour     = _ftimes[0];
+								let _minute   = _ftimes[1];
+								let _second   = _ftimes[2];
+								let _server   = Date.UTC(_year, 
+											(parseInt(_month)-1), 
+											 parseInt(_date2), 
+											 parseInt(_hour), 
+											 parseInt(_minute), 
+											 parseInt(_second));
+								let tserver = new Date(_server).toISOString();
+								let date    = new Date();
+								let _local  = Date.UTC(date.getFullYear(), 
+											date.getMonth(),
+											date.getDate(), 
+											date.getHours(),
+											date.getMinutes(), 
+											date.getSeconds());
+								let tlocal = new Date(_local).toISOString();
+								$('.time').html(tserver + '<br>' + tlocal);
+								if (tserver !== tlocal) {
+									percent = percent - 3;
+								}
+				});
 				if (uadata) {
 					os = uadata.platform;
 					brands = uadata.brands;
@@ -72,14 +106,10 @@
 				if (brand === 'Firefox') {
 					percent = percent - 2;
 				}
-				if (tserver !== tlocal) {
-					percent = percent - 3;
-				}
 				if (typeof checkpoint === 'undefined') {
 					percent = percent - 19;
 				}
 				$('.os').html(os);
-				$('.time').html(tserver + '<br>' + tlocal);
 				$('.status').html(percent + '%');
 				$('.lang').html(lang + '<br>' + langc);
 				$('.ip').html(data.version + ' ' + data.ip);
