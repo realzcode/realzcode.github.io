@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Tetris</title>
+    <script src="./index.js"></script>
+    <script src="./jquery.min.js"></script>
+    <script src="./blockrain.jquery.min.js"></script>
+    <link rel="stylesheet" href="./blockrain.css">
+    <link rel="stylesheet" href="./bootstrap.min.css"></link>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <style type="text/css">
+        #refresh {
+            margin-top: 300px;
+        }
+    </style>
+ </head>
+<body class="bg-dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="bot" style="width:400px;height:600px"></div>
+            </div>
+            <div class="col-lg-1">
+                <button class="btn btn-outline-success" id="refresh">Refresh</button>
+                Tetris by <a class="text-white text-decoration-none" href="http://aerolab.github.io/blockrain.js/" target="_blank" title="blockrain.js">Blockrain</a>
+            </div>
+            <div class="col-lg-5">
+                <div class="you" style="width:400px;height:600px"></div>
+            </div>
+        </div>
+    </div>
+ </body>
+ <script>
+
+    let theme = ['custom','candy','modern','retro','vim','monochrome','gameboy','aerolab']
+
+    let rand_theme = Math.floor(Math.random() * theme.length);
+    let rand_theme2 = Math.floor(Math.random() * theme.length);
+
+    $('#refresh').on('click', function(e){
+        window.location = "";
+    });
+
+    $('.bot').blockrain({
+        autoplay: true, // Let a bot play the game
+        autoplayRestart: true,
+        showFieldOnStart: true,
+        theme: theme[rand_theme],
+        difficulty: 'normal',
+        speed: 3,
+        scoreText: 'Bot',
+        'custom': {
+              background: '#040304',
+              backgroundGrid: '#000',
+              complexBlocks: {
+                line:     ['assets/blocks/custom/line.png', 'assets/blocks/custom/line.png'],
+                square:   'assets/blocks/custom/square.png',
+                arrow:    'assets/blocks/custom/arrow.png',
+                rightHook:'assets/blocks/custom/rightHook.png',
+                leftHook: 'assets/blocks/custom/leftHook.png',
+                rightZag: 'assets/blocks/custom/rightZag.png',
+                leftZag:  'assets/blocks/custom/leftZag.png'
+              }
+        },
+    });
+
+    $('.you').blockrain({
+        autoplay: false, // Let a bot play the game
+        autoplayRestart: true, // Restart the game automatically once a bot loses
+        showFieldOnStart: true, // Show a bunch of random blocks on the start screen (it looks nice)
+        theme: theme[rand_theme2], // The theme name or a theme object (custom|candy|modern|retro|vim|monochrome|gameboy|aerolab)
+        blockWidth: 10, // How many blocks wide the field is (The standard is 10 blocks)
+        autoBlockWidth: false, // The blockWidth is dinamically calculated based on the autoBlockSize. Disabled blockWidth. Useful for responsive backgrounds
+        autoBlockSize: 24, // The max size of a block for autowidth mode
+        difficulty: 'normal', // Difficulty (normal|nice|evil).
+        speed: 10, // The speed of the game. The higher, the faster the pieces go.
+        // Copy
+        playText: 'Let\'s play some Tetris',
+        playButtonText: 'Play',
+        gameOverText: 'Game Over',
+        restartButtonText: 'Play Again',
+        scoreText: 'You',
+        'custom': {
+              background: '#040304',
+              backgroundGrid: '#000',
+              complexBlocks: {
+                line:     ['assets/blocks/custom/line.png', 'assets/blocks/custom/line.png'],
+                square:   'assets/blocks/custom/square.png',
+                arrow:    'assets/blocks/custom/arrow.png',
+                rightHook:'assets/blocks/custom/rightHook.png',
+                leftHook: 'assets/blocks/custom/leftHook.png',
+                rightZag: 'assets/blocks/custom/rightZag.png',
+                leftZag:  'assets/blocks/custom/leftZag.png'
+              }
+        },
+        // Basic Callbacks
+        onStart: function(){
+             $('.bot').blockrain('restart');
+        },
+        onRestart: function(){
+            $('.bot').blockrain('restart');
+        },
+        onGameOver: function(score){
+
+            var bot = $('.bot').blockrain('score');
+            var you = $('.you').blockrain('score');
+
+            if (bot > you) {
+                alert('Loser :p');
+            } else {
+                alert('Winner :)');
+            }
+        },
+        // When a line is made. Returns the number of lines, score assigned and total score
+        onLine: function(lines, scoreIncrement, score){
+
+        }
+    });
+    
+    // // Start the game
+    // $game.blockrain('start');
+
+    // Restart the game
+    // $game.blockrain('restart');
+
+    // // Trigger a game over
+    // $game.blockrain('gameover');
+
+    // // Pause
+    // $game.blockrain('pause');
+
+    // // Resume
+    // $game.blockrain('resume');
+
+    // // Enable or Disable Autoplay (true|false)
+    // $game.blockrain('autoplay', true);
+
+    // // Enable or Disable Controls (true|false)
+    // $game.blockrain('controls', true);
+
+    // // Change the theme. 
+
+    // // You can provide a theme name...
+    // $game.blockrain('theme', 'vim');
+
+    // // Or a theme object. **Check out src/blockrain.jquery.themes.js** for examples.
+    // $game.blockrain('theme', {
+    //   background: '#ffffff',
+    //   primary: '#ff7b00',
+    //   secondary: '#000000'
+    // });
+
+    // var score = $game.blockrain('score');
+</script>
+ </html> 
