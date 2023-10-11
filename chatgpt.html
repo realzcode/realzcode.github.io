@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>🤖 ChatGPT</title>
+	<script src="./index.js"></script>
+	<script src="./jquery.min.js"></script>
+	<link rel="stylesheet" href="./bootstrap.min.css"></link>
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+	<link rel="manifest" href="./site.webmanifest">
+	<style>
+		#chat-log {
+			border-radius: 5px;
+			background:#111;
+			height: 300px;
+			margin: 10px 0;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		.message {
+			border-radius: 5px;
+			padding: 10px;
+			margin: 15px;
+		}
+		.ai {
+			background:#111;
+			color:#555;
+		}
+		.user {
+			background:#222;
+			color:#666;
+		}
+	</style>
+</head>
+<body class="bg-dark text-white">
+
+  <div class="container">
+
+		<div class="row justify-content-center" style="margin-top: 45px;">
+			<div class="col-lg-10">
+				<h1 class="display-4">🤖 ChatGPT</h1>
+				<p class="lead">Chat with ChatGPT by <a class="text-white" href="https://twitter.com/realzcode" target="_blank">RealzCode</a></p>
+				<hr class="my-4" style="background:white;">
+			</div>
+		</div>
+
+		<div class="row justify-content-center" style="margin-bottom: 45px;">
+
+			<div class="col-lg-10">
+
+				<script type="text/javascript">
+
+					/* 
+					 * ChatGPT v1.0
+					 * Chat Tools by RealzCode
+					 *
+					 * Thank you Javascript 🙃
+					 *
+					 */
+
+					$(document).ready(function () {
+
+						const chatLog = $('#chat-log');
+						const userInput = $('#user-input');
+						const sendButton = $('#send-button');
+						const apiKeyInput = $('#api-key-input');
+
+						// Function to add user and AI messages to the chat log
+						function appendMessage(role, text) {
+							const messageDiv = $('<div>').addClass('message').addClass(role).text(text);
+							chatLog.prepend(messageDiv);
+						}
+
+						// Function to send user message to GPT-3.5 and receive a response
+						function sendMessage() {
+
+							const apiKey = apiKeyInput.val();
+							const userMessage = userInput.val();
+
+							// Check if an API key is set
+							if (!apiKey) {
+							  appendMessage('ai', 'Please enter your API key.');
+							  return;
+							}
+
+							// Check message empty
+							if (!userMessage) {
+							  return;
+							}
+							appendMessage('user', userMessage);
+							userInput.attr('placeholder', 'Loading...');
+							userInput.val('').focus();
+
+							// Make an API request to GPT-3.5
+							$.ajax({
+							    type: 'POST',
+							    url: 'https://api.openai.com/v1/engines/gpt-3.5-turbo/completions',
+							    headers: {
+							        'Authorization': `Bearer ${apiKey}`,
+							        'Content-Type': 'application/json',
+							    },
+							    data: JSON.stringify({
+							        prompt: userMessage,
+							        max_tokens: 50, // Adjust this as needed
+							    }),
+							    success: function (data) {
+							        if (data && data.choices && data.choices.length > 0) {
+							            const aiResponse = data.choices[0].text;
+							            appendMessage('ai', aiResponse);
+							        } else {
+							        	appendMessage('ai', 'Error: Unable to get a valid response from the API.');
+							        }
+							        userInput.attr('placeholder', 'Type a message...');
+							    },
+							    error: function (jqXHR, textStatus, errorThrown) {
+							    	if (textStatus === 'error') {
+							    		appendMessage('ai', 'No Internet Connection');
+							    	} else {
+							    		const errorResponse = JSON.parse(jqXHR.responseText);
+							    		appendMessage('ai', errorResponse.error.message);
+							    	}
+							    	userInput.attr('placeholder', 'Type a message...');
+								},
+							});
+						}
+
+						// Event handler for the send button
+						sendButton.click(sendMessage);
+
+						// Event handler for pressing Enter key in the API key input field
+						apiKeyInput.keypress(function (e) {
+							if (e.which === 13) {
+							  apiKey = apiKeyInput.val();
+							  apiKeyInput.val('');
+							}
+						});
+
+						// Event handler for pressing Enter key in the user input field
+						userInput.keypress(function (e) {
+							if (e.which === 13) {
+							  sendMessage();
+							}
+						});
+
+					});
+
+
+				</script>
+
+				<div id="chat-box">
+					<div class="input-group">
+					  <input class="form-control" type="password" id="api-key-input" placeholder="Enter your API key..." />
+					  <input class="form-control" type="text" id="user-input" placeholder="Type a message..." />
+					  <div class="input-group-append">
+					  	<button class="btn btn-outline-success" id="send-button">Send</button>
+					  </div>
+					 </div>
+				  <div id="chat-log"></div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
