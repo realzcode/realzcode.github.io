@@ -98,7 +98,7 @@
 							// Make an API request to GPT-3.5
 							$.ajax({
 							    type: 'POST',
-							    url: 'https://api.openai.com/v1/chat/completions',
+							    url: 'https://api.openai.com/v1/chat/completions?',
 							    headers: {
 							        'Authorization': `Bearer ${apiKey}`,
 							        'Content-Type': 'application/json',
