@@ -98,7 +98,7 @@
 							// Make an API request to GPT-3.5
 							$.ajax({
 							    type: 'POST',
-							    url: 'https://api.openai.com/v1/engines/chat/completions',
+							    url: 'https://api.openai.com/v1/completions',
 							    headers: {
 							        'Authorization': `Bearer ${apiKey}`,
 							        'Content-Type': 'application/json',
@@ -118,6 +118,7 @@
 							        userInput.attr('placeholder', 'Type a message...');
 							    },
 							    error: function (jqXHR, textStatus, errorThrown) {
+							    	const errorResponse = JSON.parse(jqXHR.responseText);
 							    	appendMessage('ai', errorResponse.error.message);
 							    	userInput.attr('placeholder', 'Type a message...');
 								},
