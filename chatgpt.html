@@ -118,12 +118,7 @@
 							        userInput.attr('placeholder', 'Type a message...');
 							    },
 							    error: function (jqXHR, textStatus, errorThrown) {
-							    	if (textStatus === 'error') {
-							    		appendMessage('ai', 'No Internet Connection');
-							    	} else {
-							    		const errorResponse = JSON.parse(jqXHR.responseText);
-							    		appendMessage('ai', errorResponse.error.message);
-							    	}
+							    	appendMessage('ai', errorResponse.error.message);
 							    	userInput.attr('placeholder', 'Type a message...');
 								},
 							});
