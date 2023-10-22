@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>👽 Obfuscated</title>
+	<script src="./index.js"></script>
+	<script src="./jquery.min.js"></script>
+	<link rel="stylesheet" href="./bootstrap.min.css"></link>
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+	<link rel="manifest" href="./site.webmanifest">
+	<style type="text/css">
+		* {
+			outline: none;
+		}
+		textarea {  
+			width: 100%;
+			height: 300px;
+			resize: none;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body class="bg-dark text-white">
+<div class="container">
+	<div class="row justify-content-center" style="margin-top: 45px;">
+		<div class="col-lg-10">
+			<h1 class="display-4">👽 Obfuscated</h1>
+			<p class="lead">by <a class="text-white" href="https://twitter.com/realzcode" target="_blank">RealzCode</a></p>
+			<hr class="my-4" style="background:white;">
+		</div>
+	</div>
+			<script>
+				$(document).ready(function() {
+
+					/*
+					*	POC Watch v1.0
+					*	
+					* 	Thank you Javascript 🙃
+					*/
+
+					$('#magic').on('click', function(e) {
+
+						e.preventDefault();
+
+						let source    = $('#source').val();
+						let char      = $('#char').val();
+						let charend   = $('#charend').is(':checked');
+						let charfirst = $('#charfirst').is(':checked');
+
+						if (char !== '')
+						{
+							if (source.includes(char))
+							{
+								alert('Source include "' + char + '"');
+								return;
+							}
+						}
+
+						let var1  = String(source).trim().replace(/let\s/g,'_let_');
+						let var2  = String(var1).trim().replace(/var\s/g,'_var_');
+						let var3  = String(var2).trim().replace(/dim\s/g,'_dim_');
+
+						let trim  = String(var3).replace(/\s+/g,'');
+
+						let vars1 = String(trim).replace(/_let_/g,'let ');
+						let vars2 = String(vars1).replace(/_var_/g,'var ');
+						let vars3 = String(vars2).replace(/_dim_/g,'dim ');
+
+						let newl  = String(vars3).replace(/(?:\r\n|\r|\n)/g,''); 
+						let tab   = String(newl).replace(/\t/g,''); 
+						let split = String(tab).split('');
+
+
+						let temp = charfirst ? char : '';
+						let len  = split.length;
+
+						$.each(split, function(k,v) {
+
+							if (charend)
+							{
+								temp+= v + char;
+							}
+							else
+							{
+								if (k !== (len - 1)) 
+								{
+									temp+= v + char;
+								} 
+								else 
+								{
+									temp+= v;
+								}
+							}
+							
+						});
+
+						$('#destination').val(temp);
+
+					});
+
+			});
+			</script>
+	<div class="d-flex justify-content-center" style="margin-bottom: 45px;">
+		<div class="col-lg-10">
+			<label class="control-label">Source</label>
+			<textarea id="source"></textarea>
+		</div>
+	</div>
+	<div class="d-flex justify-content-center" style="margin-bottom: 45px;">
+		<div class="col-lg-10">
+			<div class="row">
+
+				<div class="col-lg-2">
+					<label class="control-label">Insert char</label>
+					<input class="form-control" type="text" id="char"/>
+				</div>
+
+				<div class="col-lg-2">
+					<label class="control-label">With first char</label>
+					<input class="form-control" type="checkbox" id="charfirst"/>
+				</div>
+
+				<div class="col-lg-2">
+					<label class="control-label">With end char</label>
+					<input class="form-control" type="checkbox" id="charend"/>
+				</div>
+
+				<div class="col-lg-2">
+					<label class="control-label">&nbsp;</label>
+					<div class="input-group">
+						<button class="btn btn-dark btn-outline-secondary" id="magic">Magic</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="d-flex justify-content-center" style="margin-bottom: 45px;">
+		<div class="col-lg-10">
+			<label class="control-label">Destination</label>
+			<textarea id="destination"></textarea>
+		</div>
+	</div>
+	<div class="d-flex justify-content-center" style="margin-bottom: 45px;">
+		<div class="col-lg-10">
+			<hr class="my-4" style="background:white;">
+			<label class="control-label">Javascript</label>
+			<pre>
+				let obfuscated = "_a_l_e_r_t_(_"_H_e_l_l_o_-_W_o_r_l_d_"_)_;_";
+				let code = String(obfuscated).replace(/_+/g,'');
+				let x = new Function(code);
+				return(x());
+			</pre>
+			<label class="control-label">VBScript</label>
+			<pre>
+				o = "M_s_g_b_o_x_""_H_e_l_l_o_-_W_o_r_l_d_"""
+				x = Replace(o,"_","")
+				Execute x
+			</pre>
+		</div>
+	</div>
+</div>
+</body>
+</html>
