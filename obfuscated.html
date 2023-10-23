@@ -17,10 +17,12 @@
 			outline: none;
 		}
 		textarea {  
-			width: 100%;
+			padding: 10px;
 			height: 300px;
 			resize: none;
-			padding: 10px;
+			width: 100%;
+			color:#ddd;
+			background:#222;
 			box-sizing: border-box;
 		}
 	</style>
@@ -43,6 +45,88 @@
 					* 	Thank you Javascript 🙃
 					*/
 
+					let toASCII = (hex = '') => {
+						const res = [];
+						for(let i = 0; i < hex.length; i += 2){
+							res.push(hex.slice(i, i+2));
+						};
+						return res
+								.map(el => String.fromCharCode(parseInt(el, 16)))
+								.join('');
+					};
+
+					let toHex = (ascii = '') => {
+						return ascii
+								.split('')
+								.map(el => el.charCodeAt().toString(16))
+								.join('');
+					};
+
+					$('#atob').on('click', function(e) {
+
+						e.preventDefault();
+
+						let result = $('#result').val();
+						$('#source').val(result);
+					   	let source = $('#source').val();
+
+					   	try 
+					   	{
+							$('#result').val(atob(source));
+						}
+						catch(err) 
+						{
+							$('#result-label').text('Result AtoB [Failed]');
+							return;
+						}
+					   	
+						$('#result-label').text('Result AtoB');
+					});
+
+					$('#btoa').on('click', function(e) {
+						e.preventDefault();
+						let source = $('#source').val();
+					   	$('#result').val(btoa(source));
+						$('#result-label').text('Result BtoA');
+					});
+
+					$('#euri').on('click', function(e) {
+						e.preventDefault();
+						let source = $('#source').val();
+					   	$('#result').val(encodeURI(source));
+						$('#result-label').text('Result encodeURI');
+					});
+
+					$('#duri').on('click', function(e) {
+						e.preventDefault();
+						let result = $('#result').val();
+						$('#source').val(result);
+					   	let source = $('#source').val();
+					   	$('#result').val(decodeURI(source));
+						$('#result-label').text('Result decodeURI');
+					});
+
+					$('#btoa').on('click', function(e) {
+						e.preventDefault();
+						let source = $('#source').val();
+					   	$('#result').val(btoa(source));
+						$('#result-label').text('Result BtoA');
+					});
+
+					$('#hex').on('click', function(e) {
+						e.preventDefault();
+						let source = $('#source').val();
+					   	$('#result').val(toHex(source));
+						$('#result-label').text('Result to Hex');
+					});
+
+					$('#ascii').on('click', function(e) {
+						e.preventDefault();
+						let source = $('#source').val();
+					   	$('#result').val(toASCII(source));
+						$('#result-label').text('Result to Ascii');
+					});
+
 					$('#magic').on('click', function(e) {
 
 						e.preventDefault();
@@ -64,17 +148,18 @@
 						let var1  = String(source).trim().replace(/let\s/g,'_let_');
 						let var2  = String(var1).trim().replace(/var\s/g,'_var_');
 						let var3  = String(var2).trim().replace(/dim\s/g,'_dim_');
+						let var4  = String(var3).trim().replace(/const\s/g,'_const_');
 
-						let trim  = String(var3).replace(/\s+/g,'');
+						let trim  = String(var4).replace(/\s+/g,'');
 
 						let vars1 = String(trim).replace(/_let_/g,'let ');
 						let vars2 = String(vars1).replace(/_var_/g,'var ');
 						let vars3 = String(vars2).replace(/_dim_/g,'dim ');
+						let vars4 = String(vars3).replace(/_const_/g,'const ');
 
-						let newl  = String(vars3).replace(/(?:\r\n|\r|\n)/g,''); 
-						let tab   = String(newl).replace(/\t/g,''); 
+						let newl  = String(vars4).replace(/(?:\r\n|\r|\n)/g,'');
+						let tab   = String(newl).replace(/\t/g,'');
 						let split = String(tab).split('');
-
 
 						let temp = charfirst ? char : '';
 						let len  = split.length;
@@ -99,7 +184,8 @@
 							
 						});
 
-						$('#destination').val(temp);
+						$('#result').val(temp);
+						$('#result-label').text('Result Magic');
 
 					});
 
@@ -112,12 +198,14 @@
 		</div>
 	</div>
 	<div class="d-flex justify-content-center" style="margin-bottom: 45px;">
+		
 		<div class="col-lg-10">
+
 			<div class="row">
 
 				<div class="col-lg-2">
 					<label class="control-label">Insert char</label>
-					<input class="form-control" type="text" id="char"/>
+					<input class="form-control" type="text" id="char" value="?" placeholder="?" />
 				</div>
 
 				<div class="col-lg-2">
@@ -130,19 +218,41 @@
 					<input class="form-control" type="checkbox" id="charend"/>
 				</div>
 
-				<div class="col-lg-2">
+				<div class="col-lg-6">
 					<label class="control-label">&nbsp;</label>
 					<div class="input-group">
 						<button class="btn btn-dark btn-outline-secondary" id="magic">Magic</button>
 					</div>
 				</div>
+
+			</div>
+
+			<div class="row" style="margin-top:20px">
+
+				<div class="col-lg-8">
+					<label class="control-label">Others</label>
+					<div class="input-group">
+						<button class="btn btn-dark btn-outline-secondary" id="hex">to Hex</button>
+						&nbsp;
+						<button class="btn btn-dark btn-outline-secondary" id="ascii">to Ascii</button>
+						&nbsp;
+						<button class="btn btn-dark btn-outline-secondary" id="btoa">BtoA</button>
+						&nbsp;
+						<button class="btn btn-dark btn-outline-secondary" id="atob">AtoB</button>
+						&nbsp;
+						<button class="btn btn-dark btn-outline-secondary" id="euri">encodeURI</button>
+						&nbsp;
+						<button class="btn btn-dark btn-outline-secondary" id="duri">decodeURI</button>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
 	<div class="d-flex justify-content-center" style="margin-bottom: 45px;">
 		<div class="col-lg-10">
-			<label class="control-label">Destination</label>
-			<textarea id="destination"></textarea>
+			<label class="control-label" id="result-label">Result</label>
+			<textarea id="result"></textarea>
 		</div>
 	</div>
 	<div class="d-flex justify-content-center" style="margin-bottom: 45px;">
